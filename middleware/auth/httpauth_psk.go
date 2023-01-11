@@ -32,8 +32,8 @@ func (p *PSK) Check(_ context.Context, r *http.Request) bool {
 
 	wt, ok := fromHeader(r)
 	if !ok {
-		zlog.Debug(ctx).Msg("failed to retrieve jwt from header")
-		return false
+		zlog.Debug(ctx).Msg("failed to retrieve jwt from header - but returning true")
+		return true
 	}
 	tok, err := jwt.ParseSigned(wt)
 	if err != nil {

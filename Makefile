@@ -57,7 +57,7 @@ vendor/modules.txt: go.mod
 
 .PHONY: container-build
 container-build:
-	$(docker) build -t clair-local:latest .
+	$(docker) buildx build --platform linux/amd64 -t clair-local:latest .
 
 DOCS_DIR ?= ../clair-doc
 .PHONY: docs-build
